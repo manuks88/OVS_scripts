@@ -20,6 +20,13 @@ function check_hit
         sleep 2
         ovs-appctl dpctl/dump-flows
         cxgbtool enp7s0f4 filter show
+        if [[ $(dmesg | grep -i "fatal") || $(dmesg | grep -i "error") ]]
+        then
+        {
+                echo -e "Error seen."
+                exit 1
+        }
+        fi
 #       hit_count=$(cxgbtool enp7s0f4 filter show|grep -i switch|grep -o '[0-9][0-9]*'| awk -F ' ' '{print $2}')
         hit_count=$(cxgbtool enp7s0f4 filter show|grep -i switch|awk -F '/ffff' '{print $1}'| awk -F ' ' '{print $(NF-6)}')
         if [ $hit_count -ne 0 ]
