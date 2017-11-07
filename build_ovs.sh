@@ -15,8 +15,8 @@ make nic install
 cd ../linux_tools/cxgbtool/
 make install
 cd
-yes | cp $1/dev/T4/firmware/t6-config-hashfilter.txt /lib/firmware/cxgb4/t6-config.txt
-yes | cp $1/dev/T4/firmware/t5-config-hashfilter.txt /lib/firmware/cxgb4/t5-config.txt
+#yes | cp $1/dev/T4/firmware/t6-config-hashfilter.txt /lib/firmware/cxgb4/t6-config.txt
+#yes | cp $1/dev/T4/firmware/t5-config-hashfilter.txt /lib/firmware/cxgb4/t5-config.txt
 
 cd $2
 hg pull -u && hg update -C
